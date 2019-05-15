@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mLl_Web"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activity.WebViewActivity">
+    <android.support.v7.widget.Toolbar
+        android:background="@color/white"
+        android:id="@+id/mTool_Web"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<ImageView
+    android:layout_margin="@dimen/dp_5"
+    android:id="@+id/toolbar_img"
+    android:layout_width="@dimen/dp_25"
+    android:layout_height="@dimen/dp_25"
+    android:src="@mipmap/back_white"
+    />
+        <TextView
+            android:id="@+id/mTv_Tool"
+            android:layout_gravity="center"
+            android:textColor="@color/c_333"
+            android:textSize="@dimen/sp_16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </android.support.v7.widget.Toolbar>
+<View
+    android:background="@drawable/gra_white_de"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_2"></View>
+</LinearLayout>

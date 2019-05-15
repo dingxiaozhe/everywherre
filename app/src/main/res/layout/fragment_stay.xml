@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragment.StayFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mTool_attention"
+        android:background="?attr/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:visibility="gone">
+
+        <TextView
+            android:text="@string/attention"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v7.widget.Toolbar>
+<com.scwang.smartrefresh.layout.SmartRefreshLayout
+    android:id="@+id/refreshLayout"
+    android:layout_below="@id/mTool_attention"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:srlAccentColor="#00FAC1F3"
+    app:srlEnablePreviewInEditMode="true"
+    app:srlPrimaryColor="#FAC1F3">
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mRv_stay"
+        android:layout_below="@id/mTool_attention"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</FrameLayout>

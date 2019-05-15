@@ -1,0 +1,108 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.example.administrator.everywherretrip"
+        minSdkVersion 22
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    greendao {
+        schemaVersion 1  // 数据库的版本号
+        daoPackage 'com.example.administrator.everywherretrip.dao'  // 包名
+        targetGenDir 'src/main/java' // 存放的目录地址
+    }
+    signingConfigs {
+        debug {
+            storeFile file('banmi.jks')
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+        }
+        release {
+            storeFile file('banmi.jks')
+            storePassword "123456"
+            keyAlias "key0"
+            keyPassword "123456"
+        }
+    }
+    //需要加这行代码,否则资产目录下面的资源找不到
+    sourceSets { main { assets.srcDirs = ['src/assets', 'src/assets/'] } }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.android.support:support-v4:28.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //design
+    implementation 'com.android.support:design:28.0.0'
+
+//gson
+    implementation 'com.google.code.gson:gson:2.6.2'
+
+//xrecyclerview
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.9'
+
+//recyclerview
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+
+// banner依赖 轮播图
+    implementation 'com.youth.banner:banner:1.4.10'
+
+//加载图片依赖
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+
+//网络请求   Okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+
+//网络请求   Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+//Retrofit网络请求所用Gson
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'org.greenrobot:greendao:3.2.0'
+    implementation 'org.greenrobot:greendao-generator:3.2.0'
+    //RxJava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.0.7'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+//eventbus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //butterknife依赖
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+//搜索框
+    implementation 'com.miguelcatalan:materialsearchview:1.4.0'
+
+//CardViwe
+    implementation 'com.android.support:cardview-v7:28.0.0'
+
+    //SmartRefreshLayout
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
+    //AgentWeb
+    api 'com.just.agentweb:agentweb:4.0.3-alpha@aar' // (必选)
+    //侧滑删除按钮
+    implementation 'com.yanzhenjie:recyclerview-swipe:1.1.4'
+    //改变状态栏
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
+}

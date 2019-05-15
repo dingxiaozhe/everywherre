@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.HeadActivity"
+   android:background="@color/white">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mTool_head"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_42">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_42">
+
+            <ImageView
+                android:layout_marginTop="@dimen/dp_8"
+                android:id="@+id/img_replaces"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:src="@mipmap/back_white" />
+
+            <TextView
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="@string/myPhoto"
+                android:textColor="@color/c_333"
+                android:textSize="@dimen/sp_16"
+               android:layout_marginLeft="@dimen/dp_140"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/mImg_popup"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dp_5"/>
+            <TextView
+                android:id="@+id/tv_out"
+                android:visibility="gone"
+                android:gravity="center_vertical"
+                android:textColor="@color/c_fa6a13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/out"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dp_5"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+    <View
+        android:layout_below="@id/mTool_head"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_2"
+        android:background="@color/c_c8c8c8"/>
+
+    <ImageView
+        android:id="@+id/mImg_head"
+        android:src="@mipmap/zhanweitu_touxiang"
+        android:scaleType="fitXY"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_375"/>
+
+</RelativeLayout>
