@@ -3,11 +3,9 @@ package com.example.administrator.everywherretrip.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -30,7 +28,6 @@ import com.example.administrator.everywherretrip.ui.adapter.FragmentAdapter;
 import com.example.administrator.everywherretrip.ui.fragment.HomeFragment;
 import com.example.administrator.everywherretrip.ui.fragment.StayFragment;
 import com.example.administrator.everywherretrip.util.SpUtil;
-import com.umeng.commonsdk.debug.D;
 
 import java.util.ArrayList;
 
@@ -53,6 +50,9 @@ public class MainActivity extends BaseActivity<IView, Presenter> implements IVie
     NavigationView mNv;
     @BindView(R.id.mDl)
     DrawerLayout mDl;
+    @BindView(R.id.toolbar_te)
+    TextView toolbarTe;
+    String []title={"首页","伴米"};
     private ArrayList<BaseFragment> list;
     private static final String TAG = "MainActivity";
     private FragmentAdapter adapter;
@@ -63,6 +63,7 @@ public class MainActivity extends BaseActivity<IView, Presenter> implements IVie
     private ImageView mMIv;
     private TextView mMTv_signature;
     private RelativeLayout mMTv_attention;
+
     @Override
     protected Presenter initPresenter() {
         return new Presenter();
@@ -72,10 +73,12 @@ public class MainActivity extends BaseActivity<IView, Presenter> implements IVie
     protected int getLayoutId() {
         return R.layout.activity_main;
     }
+
     public static void startAct(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         context.startActivity(intent);
     }
+
     @Override
     public void showLoading() {
 
@@ -90,7 +93,8 @@ public class MainActivity extends BaseActivity<IView, Presenter> implements IVie
     protected void initView() {
         mToolMain.setTitle("");
         setSupportActionBar(mToolMain);
-        list=new ArrayList<>();
+        toolbarTe.setText("首页");
+        list = new ArrayList<>();
         list.add(new HomeFragment());
         list.add(new StayFragment());
         FragmentManager fm = getSupportFragmentManager();
@@ -102,7 +106,9 @@ public class MainActivity extends BaseActivity<IView, Presenter> implements IVie
         mTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                mVp.setCurrentItem(tab.getPosition());
+                int position = tab.getPosition();
+                mVp.setCurrentItem(position);
+                toolbarTe.setText(title[position]);
             }
 
             @Override
@@ -126,7 +132,8 @@ public class MainActivity extends BaseActivity<IView, Presenter> implements IVie
         super.onRestart();
         set();
     }
-    private  void set(){
+
+    private void set() {
         mName = (String) SpUtil.getParam(Constants.USERNAME, "");
         mImg = (String) SpUtil.getParam(Constants.PHOTO, "");
         mDesc = (String) SpUtil.getParam(Constants.DESC, "");
@@ -159,30 +166,32 @@ public class MainActivity extends BaseActivity<IView, Presenter> implements IVie
         mRl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,MessageActivity.class));
+                startActivity(new Intent(MainActivity.this, MessageActivity.class));
             }
         });
         mMTv_attention.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,AttentionActivity.class));
+                startActivity(new Intent(MainActivity.this, AttentionActivity.class));
             }
         });
         mRls.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,CollectionActivity.class));
+                startActivity(new Intent(MainActivity.this, CollectionActivity.class));
                 mDl.closeDrawer(Gravity.LEFT);
             }
         });
     }
+
     @OnClick(R.id.mImg_tool)
     public void onViewClicked(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.mImg_tool:
                 mDl.openDrawer(Gravity.LEFT);
                 break;
         }
     }
+
 
 }
