@@ -100,7 +100,7 @@ public class StayFragment extends BaseFragment<StayView, StayPresenter> implemen
                 } else {
                     mPresenter.PayData(id);
                 }
-                mPresenter.StaData(page);
+//                mPresenter.StaData(page);
             }
         });
         adapter.setOnClick(new MyAdapterStay.OnClick() {

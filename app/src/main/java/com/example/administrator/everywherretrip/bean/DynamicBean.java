@@ -38,6 +38,15 @@ public class DynamicBean {
         this.result = result;
     }
 
+    @Override
+    public String toString() {
+        return "DynamicBean{" +
+                "code=" + code +
+                ", desc='" + desc + '\'' +
+                ", result=" + result +
+                '}';
+    }
+
     public static class ResultBean {
         /**
          * share : {"shareTitle":"我是王自如，看看我的私藏旅行线路！","shareContent":"作为中国电子产品测评第一人，我的生活和旅行路线绝对精彩！","shareImage":"http://cdn.banmi.com/banmiapp/rahdna/1511430572565_b75a4702424bd6c56540d4ac3ec3754e.jpg","shareURL":"http://banmi.com/app2017/banmi.html?id=25"}
@@ -103,6 +112,18 @@ public class DynamicBean {
             this.activities = activities;
         }
 
+        @Override
+        public String toString() {
+            return "ResultBean{" +
+                    "share=" + share +
+                    ", banmi=" + banmi +
+                    ", page=" + page +
+                    ", limit=" + limit +
+                    ", count=" + count +
+                    ", activities=" + activities +
+                    '}';
+        }
+
         public static class ShareBean {
             /**
              * shareTitle : 我是王自如，看看我的私藏旅行线路！
@@ -146,6 +167,16 @@ public class DynamicBean {
 
             public void setShareURL(String shareURL) {
                 this.shareURL = shareURL;
+            }
+
+            @Override
+            public String toString() {
+                return "ShareBean{" +
+                        "shareTitle='" + shareTitle + '\'' +
+                        ", shareContent='" + shareContent + '\'' +
+                        ", shareImage='" + shareImage + '\'' +
+                        ", shareURL='" + shareURL + '\'' +
+                        '}';
             }
         }
 
@@ -242,6 +273,21 @@ public class DynamicBean {
 
             public void setRoutesCount(int routesCount) {
                 this.routesCount = routesCount;
+            }
+
+            @Override
+            public String toString() {
+                return "BanmiBean{" +
+                        "id=" + id +
+                        ", name='" + name + '\'' +
+                        ", location='" + location + '\'' +
+                        ", occupation='" + occupation + '\'' +
+                        ", introduction='" + introduction + '\'' +
+                        ", following=" + following +
+                        ", photo='" + photo + '\'' +
+                        ", isFollowed=" + isFollowed +
+                        ", routesCount=" + routesCount +
+                        '}';
             }
         }
 
@@ -358,6 +404,23 @@ public class DynamicBean {
 
             public void setImages(List<?> images) {
                 this.images = images;
+            }
+
+            @Override
+            public String toString() {
+                return "ActivitiesBean{" +
+                        "id=" + id +
+                        ", content='" + content + '\'' +
+                        ", audioURL='" + audioURL + '\'' +
+                        ", audioLength=" + audioLength +
+                        ", firstImageWidth=" + firstImageWidth +
+                        ", firstImageHeight=" + firstImageHeight +
+                        ", likeCount=" + likeCount +
+                        ", replyCount=" + replyCount +
+                        ", isLiked=" + isLiked +
+                        ", date='" + date + '\'' +
+                        ", images=" + images +
+                        '}';
             }
         }
     }

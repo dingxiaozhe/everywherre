@@ -117,7 +117,6 @@ public class HeadActivity extends BaseActivity<EmptyView, EmptyPresenter> implem
         switch (view.getId()) {
             case R.id.img_replaces:
                 startActivity(new Intent(HeadActivity.this, MessageActivity.class));
-
                 finish();
                 break;
             case R.id.mImg_popup:
@@ -326,12 +325,8 @@ public class HeadActivity extends BaseActivity<EmptyView, EmptyPresenter> implem
 
     //上传
     private void uploadFile(final File mFile) {
-        mImgPopup.setVisibility(View.GONE);
-        tvOut.setVisibility(View.VISIBLE);
-
-                String url = "http://yun918.cn/study/public/file_upload.php";
-
-                OkHttpClient client = new OkHttpClient.Builder()
+        String url = "http://yun918.cn/study/public/file_upload.php";
+        OkHttpClient client = new OkHttpClient.Builder()
                         .build();
 
                 //  file-->RequestBody

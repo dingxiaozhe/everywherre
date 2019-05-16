@@ -5,37 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
+android:fitsSystemWindows="true"
     tools:context=".ui.activity.AppraiseActivity">
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/toolbar">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/img_back"
             android:layout_width="@dimen/dp_25"
             android:layout_height="@dimen/dp_25"
             android:src="@mipmap/back_white"
-            android:layout_margin="@dimen/dp_8"/>
+            android:layout_margin="@dimen/dp_5"/>
         <TextView
-            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/toolbar_te"
+            android:layout_gravity="center"
             />
-        </LinearLayout>
+
     </android.support.v7.widget.Toolbar>
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_1"
+        android:layout_height="@dimen/dp_2"
         android:background="@color/c_dcdcdc"
         ></View>
-
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

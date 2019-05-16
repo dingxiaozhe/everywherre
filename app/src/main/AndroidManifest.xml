@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.administrator.everywherretrip">
-
+    <!--013f8a18622b84caea98e2aedce64ff6-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -139,6 +139,11 @@
             android:theme="@style/MainTheme" />
         <activity android:name=".ui.activity.AppraiseActivity"
             android:theme="@style/MainTheme"></activity>
-    </application>
 
+
+
+        <meta-data
+            android:name="channel"
+            android:value="${CHANNEL_VALUE}"/>
+    </application>
 </manifest>

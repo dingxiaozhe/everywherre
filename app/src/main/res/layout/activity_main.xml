@@ -27,6 +27,7 @@
                 android:layout_height="@dimen/dp_36"
                 android:layout_marginLeft="@dimen/dp_20"
                 android:layout_marginTop="@dimen/dp_20" />
+
                 <ImageView
                    android:src="@mipmap/message"
                     android:layout_marginRight="@dimen/dp_22"

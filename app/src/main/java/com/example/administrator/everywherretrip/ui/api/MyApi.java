@@ -44,7 +44,7 @@ public interface MyApi {
     String param = (String) SpUtil.getParam(Constants.TOKEN, "");
     public static final int SUCCESS_CODE = 0;
     String sBaseUrl = "http://yun918.cn/study/public/index.php/";
-    String mainUrl = "http://api.banmi.com/";
+    String mainUrl = "https://api.banmi.com/";
 
     /**
      * 获取验证码
@@ -61,8 +61,8 @@ public interface MyApi {
      * @return
      */
     @GET("api/3.0/content/routesbundles?page=1")
-    @Headers("banmi-app-token:JVy0IvZamK7f7FBZLKFtoniiixKMlnnJ6dWZ6NlsY4HGsxcAA9qvFo8yacHCKHE8YAcd0UF9L59nEm7zk9AUixee0Hl8EeWA880c0ikZBW0KEYuxQy5Z9NP3BNoBi3o3Q0g")
-    Observable<MainBean> getMain();
+  //  @Headers("banmi-app-token:JVy0IvZamK7f7FBZLKFtoniiixKMlnnJ6dWZ6NlsY4HGsxcAA9qvFo8yacHCKHE8YAcd0UF9L59nEm7zk9AUixee0Hl8EeWA880c0ikZBW0KEYuxQy5Z9NP3BNoBi3o3Q0g")
+    Observable<MainBean> getMain(@Header("banmi-app-token") String token);
 
 
     /**
@@ -82,9 +82,9 @@ public interface MyApi {
      * @param page
      * @return
      */
-    @Headers("banmi-app-token:JVy0IvZamK7f7FBZLKFtoniiixKMlnnJ6dWZ6NlsY4HGsxcAA9qvFo8yacHCKHE8YAcd0UF9L59nEm7zk9AUixee0Hl8EeWA880c0ikZBW0KEYuxQy5Z9NP3BNoBi3o3Q0g")
+   // @Headers("banmi-app-token:4mjA0j6Ii2GgPEJ66IMCE7PqLXkBPfQla9nZDSyUV3udn2LqzO6QOJgypbt8BII3Ol34eQGgboGuvLZHzPC9dahXT7eQdKYRrCdeGdRnYiOJI99lWDwAqnuHImD75pgUCEw")
     @GET("api/3.0/banmi")
-    Observable<StayBean> getData(@Query("page") int page);
+    Observable<StayBean> getData(@Header("banmi-app-token") String token,@Query("page") int page);
 
     /**
      * 修改个人信息

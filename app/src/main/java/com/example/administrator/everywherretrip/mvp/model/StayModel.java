@@ -1,6 +1,7 @@
 package com.example.administrator.everywherretrip.mvp.model;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.administrator.everywherretrip.R;
 import com.example.administrator.everywherretrip.base.BaseModel;
@@ -18,9 +19,10 @@ import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 
 public class StayModel extends BaseModel{
+    private static final String TAG = "StayModel";
     public void getModel(int page, final ResultCallBack<StayBean> callBack) {
             MyApi myApi = HttpUtils.getInstance().getApiserver(MyApi.mainUrl, MyApi.class);
-            Observable<StayBean> data = myApi.getData(page);
+            Observable<StayBean> data = myApi.getData(MyApi.param,page);
             data.compose(RxUtils.<StayBean>rxObserableSchedulerHelper())
                     .subscribe(new BaseObserver<StayBean>() {
                         @Override

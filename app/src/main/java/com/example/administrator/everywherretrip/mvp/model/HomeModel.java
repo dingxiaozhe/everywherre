@@ -18,7 +18,7 @@ public class HomeModel extends BaseModel{
     public void model(final ResultCallBack<MainBean> callBack) {
         String param = MyApi.param;
             MyApi myApi = HttpUtils.getInstance().getApiserver(MyApi.mainUrl, MyApi.class);
-            Observable<MainBean> apiMain = myApi.getMain();
+            Observable<MainBean> apiMain = myApi.getMain(MyApi.param);
             apiMain.compose(RxUtils.<MainBean>rxObserableSchedulerHelper())
                     .subscribe(new BaseObserver<MainBean>() {
                         @Override

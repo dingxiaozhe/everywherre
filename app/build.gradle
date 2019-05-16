@@ -12,33 +12,70 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true  //开启代码混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "EveryWhereTrip_${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+                }
+            }
         }
+//   debug {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            android.applicationVariants.all { variant ->
+//                variant.outputs.all {
+//                    outputFileName = "EveryWherreTrip_${defaultConfig.versionName}_${releaseTime()}.apk"
+//                }
+//            }
+//        }
     }
-    greendao {
-        schemaVersion 1  // 数据库的版本号
-        daoPackage 'com.example.administrator.everywherretrip.dao'  // 包名
-        targetGenDir 'src/main/java' // 存放的目录地址
-    }
-    signingConfigs {
-        debug {
-            storeFile file('banmi.jks')
-            storePassword "123456"
-            keyAlias "key0"
-            keyPassword "123456"
-        }
-        release {
-            storeFile file('banmi.jks')
-            storePassword "123456"
-            keyAlias "key0"
-            keyPassword "123456"
-        }
-    }
-    //需要加这行代码,否则资产目录下面的资源找不到
-    sourceSets { main { assets.srcDirs = ['src/assets', 'src/assets/'] } }
-}
 
+
+
+
+        greendao {
+            schemaVersion 1  // 数据库的版本号
+            daoPackage 'com.example.administrator.everywherretrip.dao'  // 包名
+            targetGenDir 'src/main/java' // 存放的目录地址
+        }
+        signingConfigs {
+//            debug {
+//                storeFile file('banmi.jks')
+//                storePassword "123456"
+//                keyAlias "everywherre"
+//                keyPassword "123456"
+//            }
+            release {
+                storeFile file('ls.jks')
+                storePassword "147258369"
+                keyAlias "ls0"
+                keyPassword "14725869"
+            }
+
+        }
+    productFlavors {
+        //渠道的渠道号
+        xiaomi {}
+        qh360 {}
+        baidu {}
+        wandoujia {}
+        huawei{}
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
+    }
+    //多维度打包或者叫版本差异化打包,这里用不到,名字自己定义就好
+    flavorDimensions "every"
+        //需要加这行代码,否则资产目录下面的资源找不到
+       // sourceSets { main { assets.srcDirs = ['src/assets', 'src/assets/'] } }
+
+}
+// 获取当前系统时间
+    def releaseTime() {
+        return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+    }
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'

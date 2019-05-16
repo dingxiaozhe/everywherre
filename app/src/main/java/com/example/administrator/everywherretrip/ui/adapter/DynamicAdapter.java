@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,7 @@ public class DynamicAdapter extends RecyclerView.Adapter<DynamicAdapter.ViewHold
 
     public void setList(ArrayList<DynamicBean.ResultBean.ActivitiesBean> list) {
         this.list = list;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -49,37 +51,42 @@ public class DynamicAdapter extends RecyclerView.Adapter<DynamicAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         DynamicBean.ResultBean.ActivitiesBean bean = list.get(i);
+        Log.e(TAG, "onBindViewHolder: "+bean.toString() );
         if (bean != null) {
             viewHolder.just.setText(bean.getDate());
+            viewHolder.tvCount.setText(bean.getContent());
+            viewHolder.thumb2.setText(bean.getLikeCount() + "");
+            viewHolder.tvTop.setText(bean.getReplyCount() + "");
             if (!TextUtils.isEmpty(bean.getAudioURL())) {
                 viewHolder.just.setText(bean.getDate());
-                if (!TextUtils.isEmpty(bean.getAudioURL())) {
-                    viewHolder.imgViode.setVisibility(GridView.VISIBLE);
-                    viewHolder.imgDynamic.setVisibility(GridView.GONE);
-                    viewHolder.update.setText(context.getResources().getString(R.string.update));
-                    viewHolder.voice.setVisibility(GridView.VISIBLE);
-                    viewHolder.cardDynmaic.setVisibility(GridView.GONE);
 
-                    viewHolder.thumb.setText(bean.getLikeCount() + "");
-                    viewHolder.tvTop2.setText(bean.getReplyCount() + "");
-                    viewHolder.tvAuth.setText(bean.getAudioLength() + "");
-                } else {
-                    viewHolder.imgDynamic.setVisibility(GridView.VISIBLE);
-                    viewHolder.imgViode.setVisibility(GridView.GONE);
-                    viewHolder.update.setText(context.getResources().getString(R.string.send_state));
-                    viewHolder.voice.setVisibility(GridView.GONE);
-                    viewHolder.cardDynmaic.setVisibility(GridView.VISIBLE);
-                    if (bean.getImages().size() > 0) {
-                        Glide.with(context).load(bean.getImages().get(0)).into(viewHolder.img);
-                    }
-                    viewHolder.tvCount.setText(bean.getContent());
-                    viewHolder.thumb2.setText(bean.getLikeCount() + "");
-                    viewHolder.tvTop.setText(bean.getReplyCount() + "");
+                viewHolder.imgViode.setVisibility(GridView.VISIBLE);
+                viewHolder.imgDynamic.setVisibility(GridView.GONE);
+                viewHolder.update.setText(context.getResources().getString(R.string.update));
+                viewHolder.voice.setVisibility(GridView.VISIBLE);
+                viewHolder.cardDynmaic.setVisibility(GridView.GONE);
 
+                viewHolder.thumb.setText(bean.getLikeCount() + "");
+                viewHolder.tvTop2.setText(bean.getReplyCount() + "");
+                Log.e(TAG, "onBindViewHolder++++++++++++++: " + bean.toString());
+                viewHolder.tvAuth.setText(bean.getAudioLength() + "");
+
+
+            } else {
+                viewHolder.imgDynamic.setVisibility(GridView.VISIBLE);
+                viewHolder.imgViode.setVisibility(GridView.GONE);
+                viewHolder.update.setText(context.getResources().getString(R.string.send_state));
+                viewHolder.voice.setVisibility(GridView.GONE);
+                viewHolder.cardDynmaic.setVisibility(GridView.VISIBLE);
+                if (bean.getImages().size() > 0) {
+                    Glide.with(context).load(bean.getImages().get(0)).into(viewHolder.img);
                 }
+//                    viewHolder.tvCount.setText(bean.getContent());
+//                    viewHolder.thumb2.setText(bean.getLikeCount() + "");
+//                    viewHolder.tvTop.setText(bean.getReplyCount() + "");
+
             }
         }
-
     }
 
 

@@ -4,7 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="for_more_service">你好,为了获取更好的服务</string>
-    <string name="login_app">请登录伴米旅行</string>
+    <string name="login_app">请登录伴米旅行(楼舒)</string>
     <string name="coutry_code">+86</string>
     <string name="input_phone">请输入手机号</string>
     <string name="send_verify">发送验证码</string>

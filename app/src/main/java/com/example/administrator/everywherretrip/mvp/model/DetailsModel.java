@@ -1,5 +1,7 @@
 package com.example.administrator.everywherretrip.mvp.model;
 
+import android.util.Log;
+
 import com.example.administrator.everywherretrip.R;
 import com.example.administrator.everywherretrip.base.BaseModel;
 import com.example.administrator.everywherretrip.bean.DynamicBean;
@@ -17,6 +19,7 @@ import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 
 public class DetailsModel extends BaseModel{
+    private static final String TAG = "DetailsModel";
     public  void  getData(int banmiId,int page,final ResultCallBack<DynamicBean> callBack){
         MyApi apiserver = HttpUtils.getInstance().getApiserver(MyApi.mainUrl, MyApi.class);
         Observable<DynamicBean> path = apiserver.getState(MyApi.param, banmiId, page);
@@ -24,6 +27,7 @@ public class DetailsModel extends BaseModel{
                 .subscribe(new BaseObserver<DynamicBean>() {
                     @Override
                     public void onNext(DynamicBean dynamicBean) {
+                        Log.e(TAG, "onNext: "+dynamicBean.toString()+"----"+ MyApi.param);
                         callBack.onSuccess(dynamicBean);
                     }
 

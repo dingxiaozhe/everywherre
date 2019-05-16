@@ -44,7 +44,7 @@
             android:layout_marginTop="@dimen/dp_10"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_5"
-            android:background="@color/c_a9a9a9"/>
+            android:background="@color/c_dcdcdc"/>
     </RelativeLayout>
 </android.support.v7.widget.CardView>
 </RelativeLayout>

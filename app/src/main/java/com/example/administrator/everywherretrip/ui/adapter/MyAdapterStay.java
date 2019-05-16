@@ -52,11 +52,11 @@ public class MyAdapterStay extends RecyclerView.Adapter<MyAdapterStay.ViewHolder
         RequestOptions options = RequestOptions.placeholderOf(R.mipmap.zhanweitu_touxiang);
         Glide.with(context).load(bean.getPhoto()).apply(options).into(viewHolder.img_stay);
 
-       if (mBoolean) {
-            viewHolder.mImg.setVisibility(View.VISIBLE);
-        } else {
-            viewHolder.mImg.setVisibility(View.INVISIBLE);
-        }
+//       if (mBoolean) {
+//            viewHolder.mImg.setVisibility(View.VISIBLE);
+//        } else {
+//            viewHolder.mImg.setVisibility(View.INVISIBLE);
+//        }
         boolean isFollowed = bean.isIsFollowed();
         if (isFollowed) {
             Glide.with(context).load(R.mipmap.follow).into(viewHolder.mImg);
